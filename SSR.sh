@@ -20,7 +20,7 @@ echo "#############################################################"
 echo
 
 libsodium_file="libsodium-1.0.18"
-shadowsocks_r_file="shadowsocksr-3.2.2"
+shadowsocks_r_file="3.2.2"
 
 #Current folder
 cur_dir=`pwd`
