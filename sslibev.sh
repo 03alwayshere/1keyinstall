@@ -13,7 +13,7 @@ export PATH
 cur_dir=`pwd`
 
 libsodium_file="libsodium-1.0.18"
-mbedtls_file="mbedtls-2.16.3"
+mbedtls_file="mbedtls-2.16.6"
 
 # Stream Ciphers
 ciphers=(
