@@ -444,7 +444,7 @@ firewall_set(){
         else
             echo -e "[${yellow}Warning${plain}] iptables looks like shutdown or not installed, please manually set it if necessary."
         fi
-    elif [centosversion -gt 6]; then
+    elif [centosversion -ge 7]; then
         systemctl status firewalld > /dev/null 2>&1
         if [ $? -eq 0 ]; then
             default_zone=$(firewall-cmd --get-default-zone)
