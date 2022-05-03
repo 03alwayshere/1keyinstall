@@ -386,7 +386,7 @@ config_shadowsocks(){
     "server_ipv6":"[::]",
     "server_port":${shadowsocksport},
     "local_address":"127.0.0.1",
-    "local_port":1080,
+    "local_port":1081,
     "password":"${shadowsockspwd}",
     "timeout":120,
     "method":"${shadowsockscipher}",
