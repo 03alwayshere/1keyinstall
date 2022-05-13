@@ -421,7 +421,7 @@ install(){
     # Install ShadowsocksR
     cd ${cur_dir}
     tar zxf ${shadowsocks_r_file}.tar.gz
-    mv ${shadowsocks_r_file}/shadowsocksr /usr/local/
+    mv ${shadowsocks_r_file}/shadowsocks /usr/local/shadowsocksr
     if [ -f /usr/local/shadowsocksr/server.py ]; then
         chmod +x /etc/init.d/shadowsocksr
         if check_sys packageManager yum; then
