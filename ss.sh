@@ -471,8 +471,8 @@ install_shadowsocks(){
     make && make install
     if [ $? -eq 0 ]; then
         chmod +x /etc/init.d/shadowsocksl
-        chkconfig --add shadowsocks
-        chkconfig shadowsocks on
+        chkconfig --add shadowsocksl
+        chkconfig shadowsocksl on
         # Start shadowsocks
         /etc/init.d/shadowsocksl start
         if [ $? -eq 0 ]; then
@@ -528,7 +528,7 @@ uninstall_shadowsocks_libev(){
         if [ $? -eq 0 ]; then
             /etc/init.d/shadowsocksl stop
         fi
-        chkconfig --del shadowsocks
+        chkconfig --del shadowsocksl
         rm -fr /etc/shadowsocks-libev
         rm -f /usr/local/bin/ss-local
         rm -f /usr/local/bin/ss-tunnel
