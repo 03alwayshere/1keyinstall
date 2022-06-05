@@ -21,7 +21,7 @@ i=0
 for init in "${shadowsocks_init[@]}"; do
     pid=""
     if [ -f ${init} ]; then
-        ss_status=$(${init} status)
+        ${init} restart &>/dev/null
         if [ $? -eq 0 ]; then
             pid=$(echo "$ss_status" | sed -e 's/[^0-9]*//g')
         fi
