@@ -242,7 +242,7 @@ pre_install(){
         echo -e "[${green}Info${plain}] Upgrade shadowsocks libev to latest version..."
         ps -ef | grep -v grep | grep -i "ss-server" > /dev/null 2>&1
         if [ $? -eq 0 ]; then
-            /etc/init.d/shadowsocks stop
+            /etc/init.d/shadowsocksl stop
         fi
     elif [ ${status} -eq 2 ]; then
         print_info
@@ -344,7 +344,7 @@ download_files(){
     download "${shadowsocks_libev_ver}.tar.gz" "${download_link}"
     download "${libsodium_file}.tar.gz" "${libsodium_url}"
     download "${mbedtls_file}-gpl.tgz" "${mbedtls_url}"
-    download "/etc/init.d/shadowsocks" "${init_script_link}"
+    download "/etc/init.d/shadowsocksl" "${init_script_link}"
 }
 
 install_libsodium() {
@@ -421,10 +421,10 @@ install_shadowsocks(){
     ./configure --disable-documentation
     make && make install
     if [ $? -eq 0 ]; then
-        chmod +x /etc/init.d/shadowsocks
-        update-rc.d -f shadowsocks defaults
+        chmod +x /etc/init.d/shadowsocksl
+        update-rc.d -f shadowsocksl defaults
         # Start shadowsocks
-        /etc/init.d/shadowsocks start
+        /etc/init.d/shadowsocksl start
         if [ $? -eq 0 ]; then
             echo -e "[${green}Info${plain}] Shadowsocks-libev start success!"
         else
@@ -475,9 +475,9 @@ uninstall_shadowsocks_libev(){
     if [ "${answer}" == "y" ] || [ "${answer}" == "Y" ]; then
         ps -ef | grep -v grep | grep -i "ss-server" > /dev/null 2>&1
         if [ $? -eq 0 ]; then
-            /etc/init.d/shadowsocks stop
+            /etc/init.d/shadowsocksl stop
         fi
-        update-rc.d -f shadowsocks remove
+        update-rc.d -f shadowsocksl remove
 
         rm -fr /etc/shadowsocks-libev
         rm -f /usr/local/bin/ss-local
@@ -498,7 +498,7 @@ uninstall_shadowsocks_libev(){
         rm -f /usr/local/share/man/man1/ss-nat.1
         rm -f /usr/local/share/man/man8/shadowsocks-libev.8
         rm -fr /usr/local/share/doc/shadowsocks-libev
-        rm -f /etc/init.d/shadowsocks
+        rm -f /etc/init.d/shadowsocksl
         echo "Shadowsocks-libev uninstall success!"
     else
         echo
