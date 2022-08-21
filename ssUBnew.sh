@@ -362,22 +362,6 @@ install_libsodium() {
     fi
 }
 
-install_mbedtls() {
-    if [ ! -f /usr/lib/libmbedtls.a ]; then
-        cd ${cur_dir}
-        tar zxf ${mbedtls_file}-gpl.tar.gz
-        cd "mbedtls-${mbedtls_file}"
-        make SHARED=1 CFLAGS=-fPIC
-        make DESTDIR=/usr install
-        if [ $? -ne 0 ]; then
-            echo -e "[${red}Error${plain}] ${mbedtls_file} install failed."
-            exit 1
-        fi
-    else
-        echo -e "[${green}Info${plain}] ${mbedtls_file} already installed."
-    fi
-}
-
 # Config shadowsocks
 config_shadowsocks(){
     local server_value="\"0.0.0.0\""
@@ -412,7 +396,6 @@ EOF
 # Install Shadowsocks-libev
 install_shadowsocks(){
     install_libsodium
-    install_mbedtls
 
     ldconfig
     cd ${cur_dir}
