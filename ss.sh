@@ -15,8 +15,8 @@ cur_dir=`pwd`
 libsodium_file="libsodium-stable"
 libsodium_url="https://download.libsodium.org/libsodium/releases/LATEST.tar.gz"
 
-mbedtls_file="mbedtls-3.2.1"
-mbedtls_url="https://github.com/Mbed-TLS/mbedtls/archive/refs/tags/v3.2.1.tar.gz"
+mbedtls_file="mbedtls-2.16.6"
+mbedtls_url="https://github.com/Mbed-TLS/mbedtls/archive/refs/tags/mbedtls-2.16.6.tar.gz"
 
 # Stream Ciphers
 ciphers=(
@@ -383,7 +383,7 @@ install_mbedtls() {
     if [ ! -f /usr/lib/libmbedtls.a ]; then
         cd ${cur_dir}
         tar zxf ${mbedtls_file}-gpl.tar.gz
-        cd ${mbedtls_file}
+        cd "mbedtls-${mbedtls_file}"
         make SHARED=1 CFLAGS=-fPIC
         make DESTDIR=/usr install
         if [ $? -ne 0 ]; then
