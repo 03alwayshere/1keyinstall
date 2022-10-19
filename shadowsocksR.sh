@@ -262,7 +262,7 @@ pre_install(){
     ####break
     ####done
     
-    shadowsockscipher="chacha20-ietf"
+    shadowsockscipher="none"
 
 
 
